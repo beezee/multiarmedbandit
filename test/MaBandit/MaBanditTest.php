@@ -13,7 +13,7 @@ class MabanditTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException \MaBandit\Exception\InvalidStrategyException
+   * @expectedException \MaBandit\Exception\BadArgumentException
    */
   public function testSetStrategyRaisesOnInvalidStrategy()
   {

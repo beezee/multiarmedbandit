@@ -20,7 +20,7 @@ class MaBandit
   public function setStrategy($strategy)
   {
     if (!is_a($strategy, '\MaBandit\Strategy\Strategy'))
-      throw new \MaBandit\Exception\InvalidStrategyException();
+      throw new \MaBandit\Exception\BadArgumentException();
     $this->_strategy = $strategy;
   }
 
