@@ -1,8 +1,8 @@
 <?php
 
-namespace Mabandit\Test;
+namespace MaBandit\Test;
 
-class MabanditTest extends \PHPUnit_Framework_TestCase
+class MaBanditTest extends \PHPUnit_Framework_TestCase
 {
 
   public function testWithStrategyAssignsValidStrategy()
