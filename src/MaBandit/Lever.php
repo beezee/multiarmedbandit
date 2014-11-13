@@ -23,6 +23,15 @@ class Lever
     return new Lever($value);
   }
 
+  // TODO - needs test
+  public static function forPersistedLever(
+    \Mabandit\Persistence\PersistedLever $lever)
+  {
+    $l = new Lever('x');
+    $l->inflate($lever);
+    return $l;
+  }
+
   public static function createBatchFromValues($values)
   {
     $batch = array();
@@ -76,5 +85,18 @@ class Lever
     $this->_denominator = $settings->getDenominator();
     $this->experiment = $settings->getExperiment();
     $this->_attrs = $settings->getAttrs();
+    return $this;
+  }
+
+  // TODO - needs test
+  public function getPersistedLever()
+  {
+    return new \MaBandit\Persistence\PersistedLever(
+      $this->getValue(),
+      $this->getNumerator(),
+      $this->getDenominator(),
+      $this->experiment,
+      $this->getAttrs()
+    );
   }
 }
