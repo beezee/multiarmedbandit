@@ -50,4 +50,27 @@ class Lever
       return 0;
     return $this->getNumerator() / $this->getDenominator();
   }
+
+  public function incrementDenominator()
+  {
+    $this->_denominator++;
+  }
+
+  public function incrementNumerator()
+  {
+    if ($this->_numerator >= $this->_denominator)
+      throw new \MaBandit\Exception\LeverNumeratorTooHighException();
+    $this->_numerator++;
+  }
+
+  public function inflate($settings)
+  {
+    if (!is_object($settings)
+      or !get_class($settings) == 'MaBandit\Persistence\PersistedLever')
+        throw new \MaBandit\Exception\BadArgumentException();
+    $this->_value = $settings->getValue();
+    $this->_numerator = $settings->getNumerator();
+    $this->_denominator = $settings->getDenominator();
+    $this->experiment = $settings->getExperiment();
+  }
 }
