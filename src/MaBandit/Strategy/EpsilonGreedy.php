@@ -1,45 +1,58 @@
 <?php
 
 namespace MaBandit\Strategy;
+use \prettyArray\PrettyArray;
 
 // TODO - needs tests
 class EpsilonGreedy implements Strategy
 {
   
-  private $_percentExploration;
+  private $_exploreEvery;
 
-  private function __construct($percentExploration)
+  private function __construct($exploreEvery)
   {
-    $this->_percentExploration = $percentExploration;
+    $this->_exploreEvery = $exploreEvery;
   }
 
-  public static function withPercentExploration($percentExploration)
+  public static function withExplorationEvery($exploreEvery)
   {
-    if (!is_int($percentExploration) or $percentExploration > 99
-      or $percentExploration < 1)
-        throw new \MaBandit\Exception\InvalidPercentExplorationException();
-    $i = new EpsilonGreedy($percentExploration);
+    if (!is_int($exploreEvery) or $exploreEvery < 1)
+        throw new \MaBandit\Exception\InvalidExploitationLengthException();
+    $i = new EpsilonGreedy($exploreEvery);
     return $i;
   }
 
   public function getWinner($levers)
   {
-    return __::chain($levers)
-      ->sortBy(function($l) { return $l->getConversionRate() * -1; })
-      ->first()->value();
+    return (new PrettyArray($levers))
+      ->max_by(function($l) { return $l->getConversionRate(); });
   }
 
+  // TODO - make selection non deterministic during a tie and test
   public function getExplorationLevers($levers)
   {
-    return __::chain($levers)
-      ->reject(function($l) use($winner) { return $winner == $l; })
-      ->value();
+    $winner = $this->getWinner($levers);
+    return (new PrettyArray($levers))
+      ->reject(function($key, $l) use($winner) { return $winner == $l; })
+      ->to_a();
+  }
+
+  public function getTotalIterations($levers)
+  {
+    return (new PrettyArray($levers))
+      ->inject(function($k, &$l, &$m) { $m += $l->getDenominator(); });
+  }
+
+  public function shouldExplore($levers)
+  {
+    return (($this->getTotalIterations($levers) + 1) % $this->_exploreEvery) 
+      == 0;
   }
   
   public function chooseLever(\MaBandit\Experiment $experiment)
   {
     $levers = $experiment->getLevers();
-    if (rand(1, 100) > $this->_percentExploration)
+    if (!$this->shouldExplore($levers))
       return $this->getWinner($levers);
     $rest = $this->getExplorationLevers($levers);
     $k = array_rand($rest);
