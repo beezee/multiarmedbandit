@@ -38,7 +38,6 @@ class MaBandit
     return $this->_persistor;
   }
 
-  // TODO - needs test
   public function getExperiment($experiment)
   {
     $lever = new \MaBandit\Persistence\PersistedLever('x', 0, 0, $experiment);
