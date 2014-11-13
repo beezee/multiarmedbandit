@@ -25,7 +25,7 @@ class EpsilonGreedy implements Strategy
   public function getWinner($levers)
   {
     return __::chain($levers)
-      ->sortBy(function($l) { return $l->getConversionRate(); })
+      ->sortBy(function($l) { return $l->getConversionRate() * -1; })
       ->first()->value();
   }
 
