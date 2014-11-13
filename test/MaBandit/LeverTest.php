@@ -32,7 +32,7 @@ class LeverTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException \MaBandit\Exception\BadArgumentException
+   * @expectedException PHPUnit_Framework_Error
    */
   public function testInflateRaisesOnBadArgument()
   {

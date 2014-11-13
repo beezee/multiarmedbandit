@@ -13,9 +13,9 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException \MaBandit\Exception\BadArgumentException
+   * @expectedException \PHPUnit_Framework_Error
    */
-  public function testSetStrategyRaisesOnInvalidStrategy()
+  public function testWithStrategyRaisesOnInvalidStrategy()
   {
     $strategy = new \stdClass();
     $bandit = \MaBandit\MaBandit::withStrategy($strategy);
