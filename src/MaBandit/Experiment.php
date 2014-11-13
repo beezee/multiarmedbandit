@@ -8,15 +8,6 @@ class Experiment
   private function __construct() {}
   private $_levers;
 
-  public static function withNameAndLevers($name, $levers)
-  {
-    $i = new Experiment();
-    $i->name = $name;
-    $i->setLevers($levers);
-    return $i;
-  }
-
-  // TODO - needs test
   public static function withName($name)
   {
     $i = new Experiment();
@@ -24,10 +15,8 @@ class Experiment
     return $i;
   }
 
-  // TODO - needs test
-  public function forValues($values)
+  public function forLevers($levers)
   {
-    $levers = \MaBandit\Lever::createBatchFromValues($values);
     $this->setLevers($levers);
     return $this;
   }

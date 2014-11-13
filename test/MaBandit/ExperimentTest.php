@@ -4,11 +4,26 @@ namespace MaBandit\Test;
 
 class ExperimentTest extends \PHPUnit_Framework_TestCase
 {
+
+  public function testWithNameReturnsNewExperimentWithNameSet()
+  {
+    $experiment = \MaBandit\Experiment::withName('test');
+    $this->assertEquals('test', $experiment->name);
+  }
   
-  public function testWithLeversReturnsNewExperimentWithSpecifiedLevers()
+  /**
+   * @expectedException \MaBandit\Exception\BadArgumentException
+   */
+  public function testRaisesWhenNonLeverValuePassedToForLevers()
+  {
+    $values = array('blue', 'green');
+    \MaBandit\Experiment::withName('test')->forLevers($values);
+  }
+
+  public function testForLeversReturnsExperimentWithSpecifiedLeversSet()
   {
     $levers = \MaBandit\Lever::createBatchFromValues(array('blue', 'green'));
-    $experiment = \MaBandit\Experiment::withNameAndLevers('test', $levers);
+    $experiment = \MaBandit\Experiment::withName('test')->forLevers($levers);
     $taggedLevers = array();
     foreach($levers as $l)
     {
@@ -17,14 +32,6 @@ class ExperimentTest extends \PHPUnit_Framework_TestCase
       $taggedLevers[] = $nl;
     }
     $this->assertEquals($taggedLevers, $experiment->getLevers());
-  }
-
-  /**
-   * @expectedException \MaBandit\Exception\BadArgumentException
-   */
-  public function testRaisesWhenNonLeverValuePassedToWithLevers()
-  {
-    $values = array('blue', 'green');
-    \MaBandit\Experiment::withNameAndLevers('test', $values);
+    $this->assertEquals('test', $experiment->name);
   }
 }
