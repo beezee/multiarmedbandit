@@ -42,20 +42,17 @@ class MaBandit
   public function getExperiment($experiment)
   {
     $lever = \MaBandit\Persistence\PersistedLever('x', 0, 0, $experiment);
-    if (!$persistedLevers = $this->_persistor->loadLeversForExperiment($lever))
+    if (!$levers = $this->_persistor->loadLeversForExperiment($lever))
       throw new \MaBandit\Exception\ExperimentNotFoundException();
-    $levers = __::chain($persistedLevers)
-      ->map(function($l) { return $l->getLever(); })
-      ->value();
     return \MaBandit\Experiment::withNameAndLevers($experiment, $levers);
   }
 
   // TODO - needs test
   public function chooseLever(\MaBandit\Experiment $experiment)
   {
-    $lever = $this->_strategy->chooseLever($experiment)->getLever();
+    $lever = $this->_strategy->chooseLever($experiment);
     $lever->incrementDenominator();
-    $this->_persistor->saveLever($lever->getPersistedLever());
+    $this->_persistor->saveLever($lever);
     return $lever;
   }
 
@@ -63,6 +60,6 @@ class MaBandit
   public function registerConversion(\MaBandit\Lever $lever)
   {
     $lever->incrementNumerator();
-    $this->_persistor->saveLever($lever->getPersistedLever());
+    $this->_persistor->saveLever($lever);
   }
 }

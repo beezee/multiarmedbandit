@@ -8,7 +8,7 @@ class ArrayPersistorTest extends \PHPUnit_Framework_TestCase
   public function testSavesAndLoadsLevers()
   {
     $p = new \MaBandit\Persistence\ArrayPersistor();
-    $l = new \MaBandit\Persistence\PersistedLever('foo', 1, 2, 'x');
+    $l = (new \MaBandit\Persistence\PersistedLever('foo', 1, 2, 'x'))->getLever();
     $p->saveLever($l);
     $f = new \MaBandit\Persistence\PersistedLever('foo', 0, 0, 'x');
     $this->assertNotEquals($l, $f);
@@ -18,8 +18,8 @@ class ArrayPersistorTest extends \PHPUnit_Framework_TestCase
   public function testLoadsLeversForExperiment()
   {
     $p = new \MaBandit\Persistence\ArrayPersistor();
-    $l = new \MaBandit\Persistence\PersistedLever('foo', 1, 2, 'y');
-    $l1 = new \MaBandit\Persistence\PersistedLever('bar', 3, 4, 'y');
+    $l = (new \MaBandit\Persistence\PersistedLever('foo', 1, 2, 'y'))->getLever();
+    $l1 = (new \MaBandit\Persistence\PersistedLever('bar', 3, 4, 'y'))->getLever();
     $p->saveLever($l);
     $p->saveLever($l1);
     $f = new \MaBandit\Persistence\PersistedLever('we', 0, 0, 'y');

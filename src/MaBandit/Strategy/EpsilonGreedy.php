@@ -40,7 +40,7 @@ class EpsilonGreedy implements Strategy
   {
     $levers = $experiment->getLevers();
     if (rand(1, 100) > $this->_percentExploration)
-      return $this->getWinner($levers)
+      return $this->getWinner($levers);
     $rest = $this->getExplorationLevers($levers);
     $k = array_rand($rest);
     return $rest[$k];

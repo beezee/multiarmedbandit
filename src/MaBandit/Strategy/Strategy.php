@@ -4,5 +4,5 @@ namespace MaBandit\Strategy;
 
 interface Strategy
 {
-  public function chooseLever(\MaBandit\Experiment $experiment)
+  public function chooseLever(\MaBandit\Experiment $experiment);
 }
