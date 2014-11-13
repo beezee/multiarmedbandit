@@ -32,6 +32,7 @@ class Lever
     return $l;
   }
 
+  // TODO - throw on non-array param and test
   public static function createBatchFromValues($values)
   {
     $batch = array();
