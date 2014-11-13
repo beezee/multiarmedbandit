@@ -9,8 +9,9 @@ class ArrayPersistor implements Persistor
   
   public function saveLever(\MaBandit\Lever $lever)
   {
-    if (!is_array($this->_levers[$lever->experiment]))
-      $this->_levers[$lever->experiment] = array();
+    if (!array_key_exists($lever->experiment, $this->_levers)
+      or !is_array($this->_levers[$lever->experiment]))
+        $this->_levers[$lever->experiment] = array();
     $this->_levers[$lever->experiment][$lever->getValue()] = $lever;
     return $lever;
   }
