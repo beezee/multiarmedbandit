@@ -7,7 +7,7 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
 
   public function testWithStrategyAssignsValidStrategy()
   {
-    $strategy = \MaBandit\Strategy\EpsilonGreedy::withPercentExploration(10);
+    $strategy = \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(10);
     $bandit = \MaBandit\MaBandit::withStrategy($strategy);
     $this->assertEquals($strategy, $bandit->getStrategy());
   }
@@ -23,7 +23,7 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
 
   public function testWithPersistorAssignsValidPersistor()
   {
-    $s = \MaBandit\Strategy\EpsilonGreedy::withPercentExploration(10);
+    $s = \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(10);
     $p = new \MaBandit\Persistence\ArrayPersistor();
     $bandit = \MaBandit\MaBandit::withStrategy($s)->withPersistor($p);
     $this->assertEquals($p, $bandit->getPersistor());
@@ -34,7 +34,7 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
    */
   public function testWithPersistorRaisesOnInvalidStrategy()
   {
-    $s = \MaBandit\Strategy\EpsilonGreedy::withPercentExploration(10);
+    $s = \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(10);
     $p = new \stdClass();
     $bandit = \MaBandit\MaBandit::withStrategy($s)->withPersistor($p);
   }
