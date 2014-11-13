@@ -35,7 +35,7 @@ class PersistedLeverTest extends \PHPUnit_Framework_TestCase
   /**
    * @expectedException \MaBandit\Exception\BadArgumentException
    */
-  public function testRaisesOnMorThan100Percent()
+  public function testRaisesOnMoreThan100Percent()
   {
     $pl = new \MaBandit\Persistence\PersistedLever('value', 5, 1, 'test');
   }
