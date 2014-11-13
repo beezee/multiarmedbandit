@@ -16,6 +16,22 @@ class Experiment
     return $i;
   }
 
+  // TODO - needs test
+  public static function withName($name)
+  {
+    $i = new Experiment();
+    $i->name = $name;
+    return $i;
+  }
+
+  // TODO - needs test
+  public function forValues($values)
+  {
+    $levers = \MaBandit\Lever::createBatchFromValues($values);
+    $this->setLevers($levers);
+    return $this;
+  }
+
   public function getLevers()
   {
     return $this->_levers;
