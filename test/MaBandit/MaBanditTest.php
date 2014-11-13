@@ -77,4 +77,12 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
     $f = new \MaBandit\Persistence\PersistedLever('test', 0, 0, '');
     $this->assertEquals($l, $bandit->getPersistor()->loadLever($f));
   }
+
+  /**
+   * @expectedException \PHPUnit_Framework_Error
+   */
+  public function testRegisterConversionRaisesWhenPassedNonLeverValue()
+  {
+    $this->getBandit()->registerConversion('foo');
+  }
 }
