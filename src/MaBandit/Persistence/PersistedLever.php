@@ -6,9 +6,11 @@ class PersistedLever
 {
 
   private $_attrs = array();
-  private $_allowedAttrs = array('numerator', 'denominator', 'experiment', 'value');
+  private $_allowedAttrs = array('numerator', 'denominator', 
+                'experiment', 'value', 'attrs');
 
-  public function __construct($value, $numerator, $denominator, $experiment)
+  public function __construct($value, $numerator, 
+    $denominator, $experiment, $attrs=array())
   {
     if (!is_int($numerator) or !is_int($denominator)
       or !is_string($experiment) or !($value)
@@ -18,6 +20,7 @@ class PersistedLever
     $this->_attrs['numerator'] = $numerator;
     $this->_attrs['denominator'] = $denominator;
     $this->_attrs['experiment'] = $experiment;
+    $this->_attrs['attrs'] = $attrs;
   }
 
   public function __call($name, $args)

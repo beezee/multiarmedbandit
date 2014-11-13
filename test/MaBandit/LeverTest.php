@@ -43,13 +43,15 @@ class LeverTest extends \PHPUnit_Framework_TestCase
   public function testInflateAssignsValuesFromPersistedLever()
   {
     $l = \MaBandit\Lever::forValue('value');
-    $pl = new \MaBandit\Persistence\PersistedLever( 'val2', 3, 4, 'ex');
+    $attrs = array('foo' => 'bar');
+    $pl = new \MaBandit\Persistence\PersistedLever( 'val2', 3, 4, 'ex', $attrs);
     $l->inflate($pl);
     $this->assertEquals('val2', $l->getValue());
     $this->assertEquals(3, $l->getNumerator());
     $this->assertEquals(4, $l->getDenominator());
     $this->assertEquals(.75, $l->getConversionRate());
     $this->assertEquals('ex', $l->experiment);
+    $this->assertEquals($attrs, $l->getAttrs());
   }
 
   public function testIncrementDenominator()

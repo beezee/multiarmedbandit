@@ -8,6 +8,7 @@ class Lever
   private $_value;
   private $_numerator = 0;
   private $_denominator = 0;
+  private $_attrs = array();
   public $experiment;
 
   private function __construct($value)
@@ -51,6 +52,11 @@ class Lever
     return $this->getNumerator() / $this->getDenominator();
   }
 
+  public function getAttrs()
+  {
+    return $this->_attrs;
+  } 
+
   public function incrementDenominator()
   {
     $this->_denominator++;
@@ -63,14 +69,12 @@ class Lever
     $this->_numerator++;
   }
 
-  public function inflate($settings)
+  public function inflate(\MaBandit\Persistence\PersistedLever $settings)
   {
-    if (!is_object($settings)
-      or !get_class($settings) == 'MaBandit\Persistence\PersistedLever')
-        throw new \MaBandit\Exception\BadArgumentException();
     $this->_value = $settings->getValue();
     $this->_numerator = $settings->getNumerator();
     $this->_denominator = $settings->getDenominator();
     $this->experiment = $settings->getExperiment();
+    $this->_attrs = $settings->getAttrs();
   }
 }

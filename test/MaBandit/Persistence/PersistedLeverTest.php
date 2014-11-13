@@ -7,11 +7,13 @@ class PersistedLeverTest extends \PHPUnit_Framework_TestCase
   
   public function testAllowsInstantiationIfAllValuesAreValid()
   {
-    $pl = new \MaBandit\Persistence\PersistedLever('value', 1, 5, 'test');
+    $attrs = array('foo' => 'bar');
+    $pl = new \MaBandit\Persistence\PersistedLever('value', 1, 5, 'test', $attrs);
     $this->assertEquals('value', $pl->getValue());
     $this->assertEquals(1, $pl->getNumerator());
     $this->assertEquals(5, $pl->getDenominator());
     $this->assertEquals('test', $pl->getExperiment());
+    $this->assertEquals($attrs, $pl->getAttrs());
   }
 
   /**
