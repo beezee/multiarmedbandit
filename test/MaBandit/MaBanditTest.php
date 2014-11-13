@@ -5,6 +5,14 @@ namespace MaBandit\Test;
 class MaBanditTest extends \PHPUnit_Framework_TestCase
 {
 
+  public function getBandit()
+  {
+    $strategy = \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(10);
+    $persistor = new \MaBandit\Persistence\ArrayPersistor();
+    return \MaBandit\MaBandit::withStrategy($strategy)
+      ->withPersistor($persistor);
+   }
+    
   public function testWithStrategyAssignsValidStrategy()
   {
     $strategy = \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(10);
@@ -41,14 +49,20 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
 
   public function testGetExperimentLoadsPersistedExperimentAndReturns()
   {
-    $s = \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(10);
-    $p = new \MaBandit\Persistence\ArrayPersistor();
-    $bandit = \MaBandit\MaBandit::withStrategy($s)->withPersistor($p);
     $levers = \MaBandit\Lever::createBatchFromValues(array('blue', 'green'));
     $ex = \Mabandit\Experiment::withName('testGetExperiment')
       ->forLevers($levers);
-    foreach($levers as $l) $p->saveLever($l);
+    $bandit = $this->getBandit();
+    foreach($levers as $l) $bandit->getPersistor()->saveLever($l);
     $this->assertEquals($bandit->getExperiment('testGetExperiment')->getLevers(),
       $ex->getLevers());
+  }
+
+  /**
+   * @expectedException \MaBandit\Exception\ExperimentNotFoundException
+   */
+  public function testGetExperimentRaisesWhenExperimentNotFound()
+  {
+    $this->getBandit()->getExperiment('fake'); 
   }
 }
