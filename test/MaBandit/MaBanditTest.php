@@ -38,4 +38,17 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
     $p = new \stdClass();
     $bandit = \MaBandit\MaBandit::withStrategy($s)->withPersistor($p);
   }
+
+  public function testGetExperimentLoadsPersistedExperimentAndReturns()
+  {
+    $s = \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(10);
+    $p = new \MaBandit\Persistence\ArrayPersistor();
+    $bandit = \MaBandit\MaBandit::withStrategy($s)->withPersistor($p);
+    $levers = \MaBandit\Lever::createBatchFromValues(array('blue', 'green'));
+    $ex = \Mabandit\Experiment::withName('testGetExperiment')
+      ->forLevers($levers);
+    foreach($levers as $l) $p->saveLever($l);
+    $this->assertEquals($bandit->getExperiment('testGetExperiment')->getLevers(),
+      $ex->getLevers());
+  }
 }

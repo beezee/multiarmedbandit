@@ -41,10 +41,10 @@ class MaBandit
   // TODO - needs test
   public function getExperiment($experiment)
   {
-    $lever = \MaBandit\Persistence\PersistedLever('x', 0, 0, $experiment);
+    $lever = new \MaBandit\Persistence\PersistedLever('x', 0, 0, $experiment);
     if (!$levers = $this->_persistor->loadLeversForExperiment($lever))
       throw new \MaBandit\Exception\ExperimentNotFoundException();
-    return \MaBandit\Experiment::withNameAndLevers($experiment, $levers);
+    return \MaBandit\Experiment::withName($experiment)->forLevers($levers);
   }
 
   public function validateLever(\MaBandit\Lever $lever)
