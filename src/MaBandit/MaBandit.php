@@ -47,19 +47,23 @@ class MaBandit
     return \MaBandit\Experiment::withNameAndLevers($experiment, $levers);
   }
 
+  public function validateLever(\MaBandit\Lever $lever)
+  {
+    return $lever;
+  }
+
   // TODO - needs test
   public function chooseLever(\MaBandit\Experiment $experiment)
   {
     $lever = $this->_strategy->chooseLever($experiment);
     $lever->incrementDenominator();
-    $this->_persistor->saveLever($lever);
-    return $lever;
+    return $this->validateLever($this->_persistor->saveLever($lever));
   }
 
   // TODO - needs test
   public function registerConversion(\MaBandit\Lever $lever)
   {
     $lever->incrementNumerator();
-    $this->_persistor->saveLever($lever);
+    return $this->validateLever($this->_persistor->saveLever($lever));
   }
 }

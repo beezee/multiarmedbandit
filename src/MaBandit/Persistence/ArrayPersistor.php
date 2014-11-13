@@ -12,6 +12,7 @@ class ArrayPersistor implements Persistor
     if (!is_array($this->_levers[$lever->experiment]))
       $this->_levers[$lever->experiment] = array();
     $this->_levers[$lever->experiment][$lever->getValue()] = $lever;
+    return $lever;
   }
 
   public function loadLever(\MaBandit\Persistence\PersistedLever $lever)

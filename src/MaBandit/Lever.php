@@ -87,16 +87,4 @@ class Lever
     $this->_attrs = $settings->getAttrs();
     return $this;
   }
-
-  // TODO - needs test
-  public function getPersistedLever()
-  {
-    return new \MaBandit\Persistence\PersistedLever(
-      $this->getValue(),
-      $this->getNumerator(),
-      $this->getDenominator(),
-      $this->experiment,
-      $this->getAttrs()
-    );
-  }
 }
