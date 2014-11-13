@@ -404,4 +404,5 @@ return array(
     'SebastianBergmann\\Exporter\\Exporter' => $vendorDir . '/sebastian/exporter/src/Exporter.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/Text/Template.php',
+    '__' => $vendorDir . '/underscore/underscore.php/underscore.php',
 );

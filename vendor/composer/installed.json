@@ -769,5 +769,43 @@
             "testing",
             "xunit"
         ]
+    },
+    {
+        "name": "underscore/underscore.php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ActiveObject/Underscore.php.git",
+            "reference": "1801b881c2596e9d95ca6628fb62db882f16aa7d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ActiveObject/Underscore.php/zipball/1801b881c2596e9d95ca6628fb62db882f16aa7d",
+            "reference": "1801b881c2596e9d95ca6628fb62db882f16aa7d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2012-05-08 22:12:27",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "underscore.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Underscore.php is a PHP port of Underscore.js.",
+        "homepage": "http://brianhaveri.github.com/Underscore.php",
+        "keywords": [
+            "functional",
+            "underscore",
+            "util"
+        ]
     }
 ]

@@ -8,7 +8,9 @@
             "email": "brian.zeligson@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+      "underscore/underscore.php": "dev-master"
+    },
     "require-dev": {
       "phpunit/phpunit": "~4.3"
     },
