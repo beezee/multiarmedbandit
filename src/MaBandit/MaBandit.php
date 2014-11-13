@@ -59,7 +59,6 @@ class MaBandit
     return $this->validateLever($this->getPersistor()->saveLever($lever));
   }
 
-  // TODO - needs test
   public function registerConversion(\MaBandit\Lever $lever)
   {
     $lever->incrementNumerator();

@@ -65,4 +65,16 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
   {
     $this->getBandit()->getExperiment('fake'); 
   }
+
+  public function testRegisterConversionAddsToLeverNumeratorAndPersists()
+  {
+    $l = \MaBandit\Lever::forValue('test');   
+    $l->incrementDenominator();
+    $this->assertEquals(0, $l->getNumerator());
+    $bandit = $this->getBandit();
+    $bandit->registerConversion($l);
+    $this->assertEquals(1, $l->getNumerator());
+    $f = new \MaBandit\Persistence\PersistedLever('test', 0, 0, '');
+    $this->assertEquals($l, $bandit->getPersistor()->loadLever($f));
+  }
 }
