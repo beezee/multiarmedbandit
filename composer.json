@@ -9,10 +9,11 @@
         }
     ],
     "require": {
-      "underscore/underscore.php": "dev-master"
+      "blainesch/prettyarray": "dev-master"
     },
     "require-dev": {
-      "phpunit/phpunit": "~4.3"
+      "phpunit/phpunit": "~4.3",
+      "psy/psysh": "dev-master"
     },
     "autoload": {
       "psr-4": {
