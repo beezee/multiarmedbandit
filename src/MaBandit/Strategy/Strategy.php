@@ -14,7 +14,6 @@ abstract class Strategy
       ->max_by(function($l) { return $l->getConversionRate(); });
   }
 
-  // TODO - make selection non deterministic during a tie and test
   public function getExplorationLevers($levers)
   {
     $winner = $this->getWinner($levers);

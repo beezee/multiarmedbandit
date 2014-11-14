@@ -35,6 +35,17 @@ class StrategyTest extends \PHPUnit_Framework_TestCase
         ->getWinner($ex->ex->getLevers()));
   }
 
+  public function testGetWinnerSelectsRandomlyWhenThereIsATie()
+  {
+    $ex = $this->getTrafficExperiment();
+    $seenValues = array();
+    for($i=0;$i<100;$i++)
+      $seenValues[] = $ex->bandit->chooseLever($ex->ex)->getValue();
+    $expected = (new PrettyArray($ex->values))->sort()->to_a();
+    $actual = (new PrettyArray($seenValues))->uniq()->sort()->to_a();
+    $this->assertEquals($expected, $actual);
+  }
+
   public function testGetExplorationLeversReturnsAllButWinner()
   {
     $ex = $this->getTrafficExperiment();
