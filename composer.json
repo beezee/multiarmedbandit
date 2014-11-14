@@ -10,7 +10,7 @@
     ],
     "require": {
       "blainesch/prettyarray": "dev-master",
-      "predis/predis": "1.1.*@dev"
+      "predis/predis": "dev-master"
     },
     "require-dev": {
       "phpunit/phpunit": "~4.3",
