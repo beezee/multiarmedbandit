@@ -32,9 +32,10 @@ class Lever
     return $l;
   }
 
-  // TODO - throw on non-array param and test
   public static function createBatchFromValues($values)
   {
+    if (!is_array($values))
+      throw new \MaBandit\Exception\BadArgumentException();
     $batch = array();
     foreach($values as $val) $batch[] = Lever::forValue($val);
     return $batch;

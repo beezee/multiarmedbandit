@@ -14,7 +14,7 @@ class LeverTest extends \PHPUnit_Framework_TestCase
     \MaBandit\Lever::createBatchFromValues($values);
   }
 
-  public function testCreateBatchForValuesTakesStringOfValuesAndReturnsLevers()
+  public function testCreateBatchForValuesTakesArrayOfValuesAndReturnsLevers()
   {
     $values = array('blue', 'green');
     $levers = \MaBandit\Lever::createBatchFromValues($values);
@@ -29,6 +29,14 @@ class LeverTest extends \PHPUnit_Framework_TestCase
       $this->assertEquals(0, $l->getConversionRate());
     }
     $this->assertNotEquals($levers[0]->getValue(), $levers[1]->getValue());
+  }
+
+  /**
+   * @expectedException \MaBandit\Exception\BadArgumentException 
+   */
+  public function testCreateBatchFromValuesRaisesOnBadArgument()
+  {
+    \MaBandit\Lever::createBatchFromValues('foo');
   }
 
   /**
