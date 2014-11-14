@@ -5,6 +5,22 @@ namespace MaBandit\Test;
 class EpsilonGreedyTest extends \PHPUnit_Framework_TestCase
 {
   use \MaBandit\Test\TestUtil;
+
+  /**
+   * @expectedException \MaBandit\Exception\InvalidExploitationLengthException
+   */
+  public function testWithExplorationEveryRaisesOnNonIntArgument()
+  {
+    \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery('foo');
+  }
+
+  /**
+   * @expectedException \MaBandit\Exception\InvalidExploitationLengthException
+   */
+  public function testWithExplorationEveryRaisesOnArgumentLessThan1()
+  {
+    \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(0);
+  }
   
   public function testShouldExploreIsTrueEvery3rdIterationWithExplorationEvery3()
   {

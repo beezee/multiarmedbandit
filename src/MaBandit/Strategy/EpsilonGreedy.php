@@ -2,7 +2,6 @@
 
 namespace MaBandit\Strategy;
 
-// TODO - needs tests
 class EpsilonGreedy extends Strategy
 {
   
