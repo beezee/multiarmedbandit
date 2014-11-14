@@ -4,15 +4,8 @@ namespace MaBandit\Test;
 
 class MaBanditTest extends \PHPUnit_Framework_TestCase
 {
+  use \MaBandit\Test\TestUtil;
 
-  public function getBandit()
-  {
-    $strategy = \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(10);
-    $persistor = new \MaBandit\Persistence\ArrayPersistor();
-    return \MaBandit\MaBandit::withStrategy($strategy)
-      ->withPersistor($persistor);
-   }
-    
   public function testWithStrategyAssignsValidStrategy()
   {
     $strategy = \MaBandit\Strategy\EpsilonGreedy::withExplorationEvery(10);

@@ -17,7 +17,8 @@
     },
     "autoload": {
       "psr-4": {
-        "MaBandit\\": "src/MaBandit"
+        "MaBandit\\": "src/MaBandit",
+        "MaBandit\\Test\\": "test/MaBandit"
       }
     }
 }

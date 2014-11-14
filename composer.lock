@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "00f6c74ef25700cfafcb55ad61c0e78a",
+    "hash": "0a9febd2ef178fd9ce4167c13cce67d1",
     "packages": [
         {
             "name": "blainesch/prettyarray",
