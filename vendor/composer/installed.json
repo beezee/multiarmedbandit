@@ -1020,5 +1020,109 @@
             "ruby",
             "underscore"
         ]
+    },
+    {
+        "name": "predis/predis",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nrk/predis.git",
+            "reference": "28accc93f0c3868711cfc89089f8cd953d642851"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nrk/predis/zipball/28accc93f0c3868711cfc89089f8cd953d642851",
+            "reference": "28accc93f0c3868711cfc89089f8cd953d642851",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "suggest": {
+            "ext-curl": "Allows access to Webdis when paired with phpiredis",
+            "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+        },
+        "time": "2014-11-07 13:24:35",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Predis\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Daniele Alessandri",
+                "email": "suppakilla@gmail.com",
+                "homepage": "http://clorophilla.net"
+            }
+        ],
+        "description": "Flexible and feature-complete PHP client library for Redis",
+        "homepage": "http://github.com/nrk/predis",
+        "keywords": [
+            "nosql",
+            "predis",
+            "redis"
+        ]
+    },
+    {
+        "name": "m6web/redis-mock",
+        "version": "v2.2.0",
+        "version_normalized": "2.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/M6Web/RedisMock.git",
+            "reference": "886354ad1094eca8b0170d7d9ee7a88d4c6f6546"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/M6Web/RedisMock/zipball/886354ad1094eca8b0170d7d9ee7a88d4c6f6546",
+            "reference": "886354ad1094eca8b0170d7d9ee7a88d4c6f6546",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "atoum/atoum": "master-dev",
+            "predis/predis": "~0.8"
+        },
+        "time": "2014-11-12 09:21:13",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "M6Web\\Component\\RedisMock": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "M6Web",
+                "email": "opensource@m6web.fr",
+                "homepage": "http://tech.m6web.fr/"
+            }
+        ],
+        "description": "Library providing a PHP mock for Redis",
+        "keywords": [
+            "mock",
+            "redis"
+        ]
     }
 ]

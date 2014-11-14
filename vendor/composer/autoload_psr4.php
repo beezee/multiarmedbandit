@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
+    'Predis\\' => array($vendorDir . '/predis/predis/src'),
     'MaBandit\\Test\\' => array($baseDir . '/test/MaBandit'),
     'MaBandit\\' => array($baseDir . '/src/MaBandit'),
 );

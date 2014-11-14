@@ -10,5 +10,6 @@ return array(
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
+    'M6Web\\Component\\RedisMock' => array($vendorDir . '/m6web/redis-mock/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src'),
 );

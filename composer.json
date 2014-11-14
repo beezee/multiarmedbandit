@@ -9,11 +9,13 @@
         }
     ],
     "require": {
-      "blainesch/prettyarray": "dev-master"
+      "blainesch/prettyarray": "dev-master",
+      "predis/predis": "1.1.*@dev"
     },
     "require-dev": {
       "phpunit/phpunit": "~4.3",
-      "psy/psysh": "dev-master"
+      "psy/psysh": "dev-master",
+      "m6web/redis-mock": "~2.0"
     },
     "autoload": {
       "psr-4": {

@@ -1,0 +1,24 @@
+{
+    "name": "m6web/redis-mock",
+    "type": "library",
+    "description" : "Library providing a PHP mock for Redis",
+    "keywords": ["redis","mock"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "M6Web",
+            "email": "opensource@m6web.fr",
+            "homepage": "http://tech.m6web.fr/"
+        }
+    ],
+    "autoload": {
+        "psr-0": {"M6Web\\Component\\RedisMock": "src/"}
+    },
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "atoum/atoum": "master-dev",
+        "predis/predis": "~0.8"
+    }
+}
