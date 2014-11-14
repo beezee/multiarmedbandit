@@ -5,9 +5,9 @@ namespace MaBandit\Persistence;
 /* 
  * This class exists to provide type safety around updating values on a Lever
  * Currently the only persistors defined are storing Levers serialized or intact
- * however if you were to store them say in a relational database, you would
- * have to take the values stored in the db, and update a new instace of a
- * Lever with the values you have persisted.
+ * however if you were to store them say in a relational database, retrieval 
+ * would require update a new instace of a Lever with values taken from
+ * the database.
  *
  * Since we typically do not want to directly assign numerator, denominator
  * value, or experiment to an existing Lever, this can only be done by passing
