@@ -9,8 +9,8 @@ class PersistedLever
   private $_allowedAttrs = array('numerator', 'denominator', 
                 'experiment', 'value', 'attrs');
 
-  public function __construct($value, $numerator, 
-    $denominator, $experiment, $attrs=array())
+  public function __construct($value, $experiment, $numerator=0,
+    $denominator=0, $attrs=array())
   {
     if (!is_int($numerator) or !is_int($denominator)
       or !is_string($experiment) or !($value)

@@ -52,7 +52,7 @@ class LeverTest extends \PHPUnit_Framework_TestCase
   {
     $l = \MaBandit\Lever::forValue('value');
     $attrs = array('foo' => 'bar');
-    $pl = new \MaBandit\Persistence\PersistedLever( 'val2', 3, 4, 'ex', $attrs);
+    $pl = new \MaBandit\Persistence\PersistedLever( 'val2', 'ex', 3, 4, $attrs);
     $l->inflate($pl);
     $this->assertEquals('val2', $l->getValue());
     $this->assertEquals(3, $l->getNumerator());

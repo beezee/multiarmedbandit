@@ -67,7 +67,7 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
     $bandit = $this->getBandit();
     $bandit->registerConversion($l);
     $this->assertEquals(1, $l->getNumerator());
-    $f = new \MaBandit\Persistence\PersistedLever('test', 0, 0, '');
+    $f = new \MaBandit\Persistence\PersistedLever('test', '');
     $this->assertEquals($l, $bandit->getPersistor()->loadLever($f));
   }
 
@@ -87,8 +87,7 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
     foreach($ex->getLevers() as $i => $l)
     {
       $this->assertEquals($values[$i], $l->getValue());
-      $f = new \MaBandit\Persistence\PersistedLever(
-        $l->getValue(), 0, 0, $ex->name);
+      $f = new \MaBandit\Persistence\PersistedLever($l->getValue(), $ex->name);
       $this->assertEquals($l, $bandit->getPersistor()->loadLever($f));
     }
   }
@@ -101,8 +100,7 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
       ->forLevers($levers);
     $chosen = $bandit->chooseLever($ex);
     $this->assertEquals(1, $chosen->getDenominator());
-    $f = new \MaBandit\Persistence\PersistedLever(
-      $chosen->getValue(), 0, 0, $ex->name);
+    $f = new \MaBandit\Persistence\PersistedLever($chosen->getValue(), $ex->name);
     $this->assertEquals($chosen, $bandit->getPersistor()->loadLever($f));
   }
 }

@@ -49,7 +49,7 @@ class MaBandit
 
   public function getExperiment($experiment)
   {
-    $lever = new \MaBandit\Persistence\PersistedLever('x', 0, 0, $experiment);
+    $lever = new \MaBandit\Persistence\PersistedLever('x', $experiment);
     if (!$levers = $this->getPersistor()->loadLeversForExperiment($lever))
       throw new \MaBandit\Exception\ExperimentNotFoundException();
     return \MaBandit\Experiment::withName($experiment)->forLevers($levers);
