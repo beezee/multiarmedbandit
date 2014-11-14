@@ -22,6 +22,7 @@ class RedisPersistor implements Persistor
   {
     RedisPersistor::getClient()->hset(
       $lever->experiment, $lever->getValue(), serialize($lever));
+    return $lever;
   }
 
   public function loadLever(\MaBandit\Persistence\PersistedLever $lever)
