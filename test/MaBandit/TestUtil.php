@@ -12,4 +12,14 @@ trait TestUtil
     return \MaBandit\MaBandit::withStrategy($strategy)
       ->withPersistor($persistor);
    }
+
+  public function getTrafficExperiment()
+  {
+    $r = new \stdClass();
+    $r->bandit = $this->getBandit();
+    $r->values = array('red', 'green', 'yellow');
+    $r->ex = $r->bandit->createExperiment('traffic', $r->values);
+    return $r;
+  }
+
 }  

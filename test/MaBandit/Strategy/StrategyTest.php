@@ -25,15 +25,6 @@ class StrategyTest extends \PHPUnit_Framework_TestCase
 {
   use \MaBandit\Test\TestUtil;
 
-  public function getTrafficExperiment()
-  {
-    $r = new \stdClass();
-    $r->bandit = $this->getBandit();
-    $r->values = array('red', 'green', 'yellow');
-    $r->ex = $r->bandit->createExperiment('traffic', $r->values);
-    return $r;
-  }
-
   public function testGetWinnerReturnsTheLeverWithHighestConversionRate()
   {
     $ex = $this->getTrafficExperiment();
