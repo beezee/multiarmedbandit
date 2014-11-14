@@ -2,6 +2,22 @@
 
 namespace MaBandit\Persistence;
 
+/* 
+ * This class exists to provide type safety around updating values on a Lever
+ * Currently the only persistors defined are storing Levers serialized or intact
+ * however if you were to store them say in a relational database, you would
+ * have to take the values stored in the db, and update a new instace of a
+ * Lever with the values you have persisted.
+ *
+ * Since we typically do not want to directly assign numerator, denominator
+ * value, or experiment to an existing Lever, this can only be done by passing
+ * a PersistedLever with the desired values to the inflate method on a Lever
+ * instance
+ *
+ * As long as this class has to exist, it is also serving as a "query builder"
+ * for looking up existing Levers. At least this way it gets some use until a
+ * future Persistor needs to take advantage of Lever->inflate()
+ */
 class PersistedLever
 {
 
