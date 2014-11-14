@@ -23,15 +23,6 @@ class Lever
     return new Lever($value);
   }
 
-  // TODO - needs test
-  public static function forPersistedLever(
-    \Mabandit\Persistence\PersistedLever $lever)
-  {
-    $l = new Lever('x');
-    $l->inflate($lever);
-    return $l;
-  }
-
   public static function createBatchFromValues($values)
   {
     if (!is_array($values))

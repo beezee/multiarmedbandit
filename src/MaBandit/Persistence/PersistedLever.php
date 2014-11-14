@@ -23,12 +23,6 @@ class PersistedLever
     $this->_attrs['attrs'] = $attrs;
   }
 
-  // TODO - needs test
-  public function getLever()
-  {
-    return \MaBandit\Lever::forPersistedLever($this);
-  }
-
   public function __call($name, $args)
   {
     if (!preg_match('/^get/', $name))
