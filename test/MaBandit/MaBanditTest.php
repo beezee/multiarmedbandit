@@ -85,4 +85,24 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
   {
     $this->getBandit()->registerConversion('foo');
   }
+
+  public function testCreateExperimentPersistsAndReturnsNewExperiment()
+  {
+    $bandit = $this->getBandit();
+    $values = array('one', 'two', 'three');
+    $ex = $bandit->createExperiment('test', $values);
+    foreach($ex->getLevers() as $i => $l)
+    {
+      $this->assertEquals($values[$i], $l->getValue());
+      $f = new \MaBandit\Persistence\PersistedLever(
+        $l->getValue(), 0, 0, $ex->name);
+      $this->assertEquals($l, $bandit->getPersistor()->loadLever($f));
+    }
+  }
+
+  public function testChooseLeverAddsToDenominatorPersistsAndReturnsLever()
+  {
+    $bandit = $this->getBandit();
+    $levers = \MaBandit\Lever::createBatchFromValues(array('yes', 'no'));
+  }
 }

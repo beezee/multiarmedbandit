@@ -38,6 +38,15 @@ class MaBandit
     return $this->_persistor;
   }
 
+  public function createExperiment($name, $values)
+  {
+    $levers = \MaBandit\Lever::createBatchFromValues($values);
+    $ex = \MaBandit\Experiment::withName($name)->forLevers($levers);
+    foreach($ex->getLevers() as $lever)
+      $this->getPersistor()->saveLever($lever);
+    return $ex;
+  }
+
   public function getExperiment($experiment)
   {
     $lever = new \MaBandit\Persistence\PersistedLever('x', 0, 0, $experiment);
