@@ -60,7 +60,6 @@ class MaBandit
     return $lever;
   }
 
-  // TODO - needs test
   public function chooseLever(\MaBandit\Experiment $experiment)
   {
     $lever = $this->getStrategy()->chooseLever($experiment);

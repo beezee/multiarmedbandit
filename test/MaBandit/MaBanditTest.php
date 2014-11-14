@@ -104,5 +104,12 @@ class MaBanditTest extends \PHPUnit_Framework_TestCase
   {
     $bandit = $this->getBandit();
     $levers = \MaBandit\Lever::createBatchFromValues(array('yes', 'no'));
+    $ex = \MaBandit\Experiment::withName('testchoosepersist')
+      ->forLevers($levers);
+    $chosen = $bandit->chooseLever($ex);
+    $this->assertEquals(1, $chosen->getDenominator());
+    $f = new \MaBandit\Persistence\PersistedLever(
+      $chosen->getValue(), 0, 0, $ex->name);
+    $this->assertEquals($chosen, $bandit->getPersistor()->loadLever($f));
   }
 }
