@@ -52,7 +52,7 @@ Create a bandit as follows:
 ```php
 $strategy = \MaBandit\EpsilonGreedy::withExplorationEvery(3) //experiment every 3rd time
 // OR
-$strategy = \MaBandit\EpsilonFirst::withExploitationAfter(100) //only experiment til 100
+$strategy = \MaBandit\EpsilonFirst::withExploitationAfter(100) //only experiments til 100
 $persistor = new \MaBandit\Persistence\RedisPersistor();
 $bandit = \MaBandit\MaBandit::withStrategy($strategy)->withPersistor($persistor);
 ```
