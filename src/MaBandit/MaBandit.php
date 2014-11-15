@@ -55,6 +55,12 @@ class MaBandit
     return \MaBandit\Experiment::withName($experiment)->forLevers($levers);
   }
 
+  public function getLeverByExperimentAndValue($experiment, $value)
+  {
+    $f = new \MaBandit\Persistence\PersistedLever($experiment, $value);
+    return $this->getPersistor()->loadLever($f);
+  }
+
   public function validateLever(\MaBandit\Lever $lever)
   {
     return $lever;
