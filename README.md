@@ -80,7 +80,7 @@ With your experiment you can now let the bandit do it's job. To ask the bandit
 for the next value for use in your experiment, call chooseLever as follows:
 
 ```php
-$nextValue = $bandit->chooseLever($experiment);
+$nextValue = $bandit->chooseLever($experiment)->getValue();
 ```
 
 Note that this method mutates the "lever" (representation of a value in an
