@@ -57,7 +57,7 @@ class MaBandit
 
   public function getLeverByExperimentAndValue($experiment, $value)
   {
-    $f = new \MaBandit\Persistence\PersistedLever($experiment, $value);
+    $f = new \MaBandit\Persistence\PersistedLever($value, $experiment);
     return $this->getPersistor()->loadLever($f);
   }
 
