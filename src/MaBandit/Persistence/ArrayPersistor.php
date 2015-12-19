@@ -26,10 +26,6 @@ class ArrayPersistor implements Persistor
   public function loadLeversForExperiment(\MaBandit\Persistence\PersistedLever $lever)
   {
 	  $the_lever = $lever->getExperiment();
-	  if( isset( $this->_levers[ $the_lever ] )  ) {
-		  return $this->_levers[ $the_lever ];
-	  }else{
-		  return array();
-	  }
+	  return (isset($this->_levers[$the_lever])) ? $this->_levers[$the_lever] : array();
   }
 }
